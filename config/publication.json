@@ -1,0 +1,56 @@
+[  
+  {
+    "urlref": "/doc/applicationprofile/netex-belgium/vehiclescheduling-ap/",
+    "seealso": "/doc/applicationprofile/netex-belgium/vehiclescheduling-ap/working-draft/2021-06-01",
+    "type": "ap",
+    "dummy": "dimi-12"
+  },
+  {
+    "urlref": "/doc/applicationprofile/netex-belgium/vehiclescheduling-ap/working-draft/2021-06-01",
+    "repository": "https://github.com/Informatievlaanderen/OSLOthema-mobiliteitDienstregelingEnPlanning",
+    "branchtag": "master",
+    "name": "vehiclescheduling-ap",
+    "filename": "config/OSLO-mobiliteitDienstregelingEnPlanning-AP.json",
+    "navigation": {},
+    "dummy": "dimi-12"
+  },
+  {
+    "urlref": "/doc/applicationprofile/netex-belgium/stopplaces-ap/",
+    "seealso": "/doc/applicationprofile/netex-belgium/stopplaces-ap/working-draft/2021-06-01",
+    "type": "ap",
+    "dummy": "dimi-13"
+  },
+  {
+    "urlref": "/doc/applicationprofile/netex-belgium/stopplaces-ap/working-draft/2021-06-01",
+    "repository": "https://github.com/Informatievlaanderen/OSLOthema-mobiliteitDienstregelingEnPlanning",
+    "branchtag": "master",
+    "name": "stopplaces-ap",
+    "filename": "config/OSLO-mobiliteitDienstregelingEnPlanning-AP.json",
+    "navigation": {},
+    "dummy": "dimi-13"
+  },
+  {
+    "urlref": "/doc/applicationprofile/netex-belgium/timetables-ap/",
+    "seealso": "/doc/applicationprofile/netex-belgium/timetables-ap/working-draft/2021-06-01",
+    "type": "ap",
+    "dummy": "dimi-12"
+  },
+  {
+    "urlref": "/doc/applicationprofile/netex-belgium/timetables-ap/working-draft/2021-06-01",
+    "repository": "https://github.com/Informatievlaanderen/OSLOthema-mobiliteitDienstregelingEnPlanning",
+    "branchtag": "master",
+    "name": "timetables-ap",
+    "filename": "config/OSLO-mobiliteitDienstregelingEnPlanning-AP.json",
+    "navigation": {},
+    "dummy": "dimi-12"
+  },
+  {
+    "urlref": "/doc/applicationprofile/AirandWater/Core//2021-04-30",
+    "repository": "https://github.com/Informatievlaanderen/OSLOthema-airAndWater",
+    "branchtag": "master",
+    "name": "OSLO-airAndWater-Core-ap",
+    "filename": "config/OSLO-AirAndWater-Core-AP.json",
+    "navigation": {},
+    "dummy": "Dummy-004"
+  }  
+]
