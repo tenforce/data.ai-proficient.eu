@@ -10,6 +10,21 @@ GOALLANGUAGE=${5-'nl'}
 echo "generate-voc: starting with $1 $2 $3"
 
 #############################################################################################
+is_vocabulary() {
+    local RLINE=$1
+    local SLINE=$2
+    COMMANDJSONLD=$(echo '.[].type')
+    TYPE=${RLINE}/translation/$(jq -r "${COMMANDJSONLD}" ${SLINE}/.names.json)
+
+    if [ "${TYPE}" == "voc" ];  then
+       return 0
+    else 
+       return 1
+    fi
+
+}
+
+
 make_jsonld() {
     local FILE=$1
     local INPUT=$2
@@ -65,6 +80,7 @@ do
     then
             for i in ${SLINE}/*.jsonld
             do
+		if is_vocabulary ${RLINE} ${SLINE} ;  then
                 echo "generate-voc: convert $i to RDF"
                 BASENAME=$(basename $i .jsonld)
                 OUTFILE=${BASENAME}.ttl
@@ -79,6 +95,7 @@ do
 #                then
 #                    exit 1
 #                fi
+                fi
             done
     else
 	    echo "Error: ${SLINE}"
