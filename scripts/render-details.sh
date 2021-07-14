@@ -211,7 +211,12 @@ render_context() { # SLINE TLINE JSON
         mkdir -p ${TLINE}/context
         OUTFILELANGUAGE=${FILENAME}_${GOALLANGUAGE}.jsonld
         COMMANDJSONLD=$(echo '.[].translation | .[] | select(.language | contains("'${GOALLANGUAGE}'")) | .mergefile')
-        MERGEDJSONLD=${RLINE}/translation/$(jq -r "${COMMANDJSONLD}" ${SLINE}/.names.json)
+        LANGUAGEFILENAMEJSONLD=$(jq -r "${COMMANDJSONLD}" ${SLINE}/.names.json)
+	if [ "${LANGUAGEFILENAMEJSONLD}" == "" ] ; then
+	    echo "configuration for language ${GOALLANGUAGE} not present. Ignore this language for ${SLINE}"
+        else 
+	
+        MERGEDJSONLD=${RLINE}/translation/${LANGUAGEFILENAMEJSONLD}
 
         echo "RENDER-DETAILS(context-language-aware): node /app/json-ld-generator2.js -d -l label -i ${MERGEDJSONLD} -o ${TLINE}/context/${OUTFILELANGUAGE} -m ${GOALLANGUAGE}"
         if ! node /app/json-ld-generator2.js -d -l label -i ${MERGEDJSONLD} -o ${TLINE}/context/${OUTFILELANGUAGE} -m ${GOALLANGUAGE}; then
@@ -224,6 +229,7 @@ render_context() { # SLINE TLINE JSON
         prettyprint_jsonld ${TLINE}/context/${OUTFILE}
         prettyprint_jsonld ${TLINE}/context/${OUTFILELANGUAGE}
         popd
+	fi 
     fi
 }
 
