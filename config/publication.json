@@ -3,7 +3,7 @@
     "urlref": "/doc/applicationprofile/netex-belgium/vehiclescheduling-ap/",
     "seealso": "/doc/applicationprofile/netex-belgium/vehiclescheduling-ap/working-draft/2021-06-01",
     "type": "ap",
-    "dummy": "dimi-12"
+    "dummy": "12"
   },
   {
     "urlref": "/doc/applicationprofile/netex-belgium/vehiclescheduling-ap/working-draft/2021-06-01",
@@ -12,6 +12,15 @@
     "name": "vehiclescheduling-ap",
     "filename": "config/OSLO-mobiliteitDienstregelingEnPlanning-AP.json",
     "navigation": {},
-    "dummy": "dimi-12"
+    "dummy": "12"
+  },
+  {
+    "urlref": "/doc/applicationprofile/manufacturing/working-draft/2021-07-01",
+    "repository": "https://github.com/tenforce/ai-proficiant-thema",
+    "branchtag": "master",
+    "name": "mijn-applicatieprofiel-ap",
+    "filename": "config/mijn-applicatieprofiel-ap.json",
+    "navigation": {},
+    "dummy": "12"
   }
 ]
