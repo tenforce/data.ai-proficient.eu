@@ -115,7 +115,12 @@ render_html() { # SLINE TLINE JSON
     COMMANDTEMPLATELANG=$(echo '.[].translation | .[] | select(.language | contains("'${LANGUAGE}'")) | .template')
     TEMPLATELANG=$(jq -r "${COMMANDTEMPLATELANG}" ${SLINE}/.names.json)
     COMMANDJSONLD=$(echo '.[].translation | .[] | select(.language | contains("'${LANGUAGE}'")) | .mergefile')
-    MERGEDJSONLD=${RRLINE}/translation/$(jq -r "${COMMANDJSONLD}" ${SLINE}/.names.json)
+    LANGUAGEFILENAMEJSONLD=$(jq -r "${COMMANDJSONLD}" ${SLINE}/.names.json)
+    if [ "${LANGUAGEFILENAMEJSONLD}" == "" ] ; then
+	    echo "configuration for language ${GOALLANGUAGE} not present. Ignore this language for ${SLINE}"
+    else 
+	
+    MERGEDJSONLD=${RRLINE}/translation/${LANGUAGEFILENAMEJSONLD}
 
     echo "RENDER-DETAILS(language html): node /app/html-generator2.js -s ${TYPE} -i ${MERGEDJSONLD} -x ${RLINE}/html-nj_${LANGUAGE}.json -r /${DROOT} -t ${TEMPLATELANG} -d ${SLINE}/templates -o ${OUTPUT} -m ${LANGUAGE} -e ${RRLINE}"
 
@@ -128,6 +133,7 @@ render_html() { # SLINE TLINE JSON
 
     pretty_print_json ${RLINE}/html-nj_${LANGUAGE}.json
     popd
+    fi
 }
 
 function pretty_print_json() {
