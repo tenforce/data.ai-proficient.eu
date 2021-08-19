@@ -259,7 +259,7 @@ render_shacl() {
 
     if [ ${TYPE} == "ap" ] || [ ${TYPE} == "oj" ]; then
         echo "RENDER-DETAILS(shacl): node /app/shacl-generator.js -i ${JSONI} -o ${OUTFILE}"
-        DOMAIN="https://semiceu.github.io/shacl/${FILENAME}"
+        DOMAIN="https://data.ai-proficiant.eu/shacl/${FILENAME}"
         pushd /app
         mkdir -p ${TLINE}/shacl
         mkdir -p ${RLINE}/shacl
@@ -284,6 +284,10 @@ render_shacl_languageaware() {
     COMMANDJSONLD=$(echo '.[].translation | .[] | select(.language | contains("'${GOALLANGUAGE}'")) | .mergefile')
     MERGEDJSONLD=${RLINE}/translation/$(jq -r "${COMMANDJSONLD}" ${SLINE}/.names.json)
 
+    if [ "${MERGEDJSONLD}" == "" ] ; then
+	    echo "configuration for language ${GOALLANGUAGE} not present. Ignore this language for ${SLINE}"
+    else 
+
     OUTFILE=${TLINE}/shacl/${FILENAME}-SHACL.jsonld
     OUTREPORT=${RLINE}/shacl/${FILENAME}-SHACL.report
 
@@ -294,7 +298,7 @@ render_shacl_languageaware() {
 
     if [ ${TYPE} == "ap" ] || [ ${TYPE} == "oj" ]; then
         echo "RENDER-DETAILS(shacl-languageaware): node /app/shacl-generator.js -i ${MERGEDJSONLD} -d ${DOMAIN} -o ${OUTFILE} -l ${GOALLANGUAGE}"
-        DOMAIN="https://semiceu.github.io/shacl/${FILENAME}"
+        DOMAIN="https://data.ai-proficiant.eu/shacl/${FILENAME}"
         pushd /app
         mkdir -p ${TLINE}/shacl
         mkdir -p ${RLINE}/shacl
@@ -306,6 +310,7 @@ render_shacl_languageaware() {
         fi
         prettyprint_jsonld ${OUTFILE}
         popd
+    fi
     fi
 }
 
