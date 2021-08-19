@@ -1,7 +1,7 @@
 {
     "dcterms:license" : "https://creativecommons.org/licenses/by/4.0/",
-    "dcterms:mediator" : { "foaf:homepage" : "https://semic.eu",
-		           "foaf:mbox" : "mailto: contact@semic.eu",
-			   "foaf:name" : "Semantic Interoperability Community (SEMIC)" 
+    "dcterms:mediator" : { "foaf:homepage" : "https://ai-proficient.eu/",
+		           "foaf:mbox" : "mailto: support@tenforce.com",
+			   "foaf:name" : "Artificial Intelligence for improved production efficiency, quality and maintenance" 
     }
 }
