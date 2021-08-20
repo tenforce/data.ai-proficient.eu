@@ -282,12 +282,14 @@ render_shacl_languageaware() {
 
     FILENAME=$(jq -r ".name" ${JSONI})_${GOALLANGUAGE}
     COMMANDJSONLD=$(echo '.[].translation | .[] | select(.language | contains("'${GOALLANGUAGE}'")) | .mergefile')
-    MERGEDJSONLD=${RLINE}/translation/$(jq -r "${COMMANDJSONLD}" ${SLINE}/.names.json)
+    LANGUAGEFILENAMEJSONLD=$(jq -r "${COMMANDJSONLD}" ${SLINE}/.names.json)
 
     if [ "${MERGEDJSONLD}" == "" ] ; then
+	if [ "${LANGUAGEFILENAMEJSONLD}" == "" ] ; then
 	    echo "configuration for language ${GOALLANGUAGE} not present. Ignore this language for ${SLINE}"
     else 
 
+    MERGEDJSONLD=${RLINE}/translation/${LANGUAGEFILENAMEJSONLD}
     OUTFILE=${TLINE}/shacl/${FILENAME}-SHACL.jsonld
     OUTREPORT=${RLINE}/shacl/${FILENAME}-SHACL.report
 
