@@ -21,7 +21,7 @@
     "name": "mijn-applicatieprofiel-ap",
     "filename": "config/mijn-applicatieprofiel-ap.json",
     "navigation": {},
-    "dummy": "17"
+    "dummy": "18"
   },
   {
     "disabled" : "true",
@@ -34,5 +34,14 @@
     "navigation": {
       "prev": "/doc/applicatieprofiel/metadata-dcat/kandidaatstandaard/2021-03-23"
     }
+  },
+  {
+    "urlref": "/doc/vocabulary/air-cz",
+    "repository": "https://github.com/Informatievlaanderen/duet-vocabularies",
+    "branchtag": "master",
+    "name": "air-cz-voc",
+    "filename": "config/air-cz-voc.json",
+    "examples": false,
+    "navigation": {}
   }
 ]
