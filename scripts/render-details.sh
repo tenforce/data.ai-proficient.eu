@@ -96,6 +96,7 @@ render_html() { # SLINE TLINE JSON
     local DROOT=$5
     local RRLINE=$6
     local LANGUAGE=$7
+    local PRIMELANGUAGE=${8-false}
 
     BASENAME=$(basename ${JSONI} .jsonld)
     #    OUTFILE=${BASENAME}.html
@@ -128,12 +129,27 @@ render_html() { # SLINE TLINE JSON
         echo "RENDER-DETAILS(language html): rendering failed"
         exit -1
     else
+	if [ ${PRIMELANGUAGE} == true ] ; then
+		cp ${OUTPUT} ${TLINE}/index.hml
+	fi
         echo "RENDER-DETAILS(language html): File was rendered in ${OUTPUT}"
     fi
 
     pretty_print_json ${RLINE}/html-nj_${LANGUAGE}.json
     popd
     fi
+}
+
+link_html() { # SLINE TLINE JSON
+    echo "link_html: $1 $2 $3 $4 $5 $6 $7"
+    local SLINE=$1
+    local TLINE=$2
+    local JSONI=$3
+    local RLINE=$4
+    local DROOT=$5
+    local RRLINE=$6
+    local LANGUAGE=$7
+
 }
 
 function pretty_print_json() {
@@ -358,7 +374,7 @@ cat ${CHECKOUTFILE} | while read line; do
             html)
                 RLINE=${TARGETDIR}/reporthtml/${line}
                 mkdir -p ${RLINE}
-                render_html $SLINE $TLINE $i $RLINE ${line} ${TARGETDIR}/report/${line} ${PRIMELANGUAGE}
+                render_html $SLINE $TLINE $i $RLINE ${line} ${TARGETDIR}/report/${line} ${PRIMELANGUAGE} true
                 render_html $SLINE $TLINE $i $RLINE ${line} ${TARGETDIR}/report/${line} ${GOALLANGUAGE}
                 ;;
             shacl) # render_shacl $SLINE $TLINE $i $RLINE
