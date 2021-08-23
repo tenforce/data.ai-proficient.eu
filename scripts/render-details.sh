@@ -130,7 +130,7 @@ render_html() { # SLINE TLINE JSON
         exit -1
     else
 	if [ ${PRIMELANGUAGE} == true ] ; then
-		cp ${OUTPUT} ${TLINE}/index.hml
+		cp ${OUTPUT} ${TLINE}/index.html
 	fi
         echo "RENDER-DETAILS(language html): File was rendered in ${OUTPUT}"
     fi
