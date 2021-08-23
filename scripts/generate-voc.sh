@@ -4,8 +4,13 @@ TARGETDIR=$1
 SUBDIR=$2
 CONFIGDIR=$3
 CHECKOUTFILE=${TARGETDIR}/checkouts.txt
-PRIMELANGUAGE=${4-'en'}
-GOALLANGUAGE=${5-'nl'}
+
+#############################################################################################
+PRIMELANGUAGECONFIG=$(jq .primeLanguage ${CONFIGDIR}/config.json)
+GOALLANGUAGECONFIG=$(jq '.otherLanguages | @sh'  ${CONFIGDIR}/config.json)
+
+PRIMELANGUAGE=${4-${PRIMELANGUAGECONFIG}}
+GOALLANGUAGE=${5-${GOALLANGUAGECONFIG}}
 
 echo "generate-voc: starting with $1 $2 $3"
 
@@ -88,13 +93,14 @@ do
 
                 mkdir -p ${TLINE}/voc
                 make_jsonld $BASENAME $i ${SLINE}/selected_${PRIMELANGUAGE}.jsonld ${CONFIGDIR} ${PRIMELANGUAGE} ${RLINE} ${SLINE}
-                make_jsonld $BASENAME $i ${SLINE}/selected_${GOALLANGUAGE}.jsonld ${CONFIGDIR} ${GOALLANGUAGE} ${RLINE} ${SLINE} || exit 1
                 cp ${SLINE}/selected_${PRIMELANGUAGE}.jsonld ${TLINE}/voc/${BASENAME}_${PRIMELANGUAGE}.jsonld
-                cp ${SLINE}/selected_${GOALLANGUAGE}.jsonld ${TLINE}/voc/${BASENAME}_${GOALLANGUAGE}.jsonld
-#                if ! rdf serialize --input-format jsonld --processingMode json-ld-1.1 ${SLINE}/selected.jsonld --output-format turtle -o ${TLINE}/voc/$BASENAME.ttl 2>&1 | tee ${REPORT}
-#                then
-#                    exit 1
-#                fi
+
+
+		for g in ${GOALLANGUAGE} 
+		do 
+                	make_jsonld $BASENAME $i ${SLINE}/selected_${g}.jsonld ${CONFIGDIR} ${g} ${RLINE} ${SLINE} 
+                	cp ${SLINE}/selected_${g}.jsonld ${TLINE}/voc/${BASENAME}_${g}.jsonld
+		done
                 fi
             done
     else
