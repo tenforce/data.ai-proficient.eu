@@ -96,7 +96,7 @@ jobs:
             - src/
   render-translation-json:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:multilingual
+      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev
     steps:
       - checkout
       - attach_workspace:
@@ -116,7 +116,7 @@ jobs:
             - translation/
   validate-and-generate-translation-report:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:multilingual
+      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev
     steps:
       - checkout
       - attach_workspace:
@@ -132,7 +132,7 @@ jobs:
             [ $( egrep " WARNING " /tmp/workspace/report/translation/*.report | wc -l ) == 0 ] || exit 1
   render-merged-jsonld:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:multilingual
+      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev
     steps:
       - checkout
       - attach_workspace:
@@ -152,7 +152,7 @@ jobs:
             - report/
   render-html-details:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:multilingual
+      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev
     steps:
       - checkout
       - attach_workspace:
@@ -176,7 +176,7 @@ jobs:
             - reporthtml/
   render-example-templates:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:multilingual
+      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev
     steps:
       - checkout
       - attach_workspace:
