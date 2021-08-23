@@ -69,14 +69,11 @@ jobs:
             [ $( egrep " ERROR " /tmp/workspace/report/*.report | wc -l ) == 0 ] || exit 1
   normalise-jsonld:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:j1.4-circleci
+      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev
     steps:
       - checkout
       - attach_workspace:
           at: /tmp/workspace
-      - run:
-          name: Make sure pretty print is runnable
-          command: cd /app/pretty-print ; sudo npm install
       - run:
           name: Normalise the recovered JSON-LD files (in the src directory)
           command: |
