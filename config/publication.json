@@ -16,7 +16,7 @@
   },
   {
     "urlref": "/doc/applicationprofile/manufacturing/working-draft/2021-07-01",
-    "repository": "https://github.com/tenforce/ai-proficiant-thema",
+    "repository": "https://github.com/tenforce/ai-proficient-thema",
     "branchtag": "master",
     "name": "manufacturing",
     "filename": "config/manufacturing.json",
