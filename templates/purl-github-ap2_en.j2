@@ -345,8 +345,9 @@
             </section>
             {% if datatypes %}
             <section>
+              <h2>Datatypes</h2>
               <div class="region region--no-space-top">
-                <h2 class="h2">Datatypes</h2>
+                {# <h2 class="h2">Datatypes</h2> #}
               </div>
             </section>
             
@@ -429,20 +430,29 @@
             </div>
             {% endfor %}
             {% endif %}
+
+            <section>
+            <h2 aria-level="1" role="heading" id="h2_sotd">JSON-LD context</h2>
             <div class="region region--no-space-top" id="jsonld">
-                <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">JSON-LD context</h2>
+                {# <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">JSON-LD context</h2> #}
                 (niet normatief)
                 {% block jsonld %}
                 <p>A reusable JSON-LD context definition for this application profile is retrievable at: <a href="https://raw.githubusercontent.com/tenforce/data.ai-proficiant.eu-generated/master{{ documentroot }}/context/{{ metadata.filename }}.jsonld" target="_blank">{{ documentroot }}/context/{{ metadata.filename }}.jsonld</a></p>
                 {% endblock %}
             </div>
+            </section>
+
+            <section>
+            <h2 aria-level="1" role="heading" id="h2_sotd">SHACL template</h2>
             <div class="region region--no-space-top" id="shacl">
-                <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">SHACL template</h2>
+                {# <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">SHACL template</h2> #}
                 (niet normatief)
                 {% block shacl%}
                 <p>A reusable SHACL template for this application profile is retrievable at: <a href="https://raw.githubusercontent.com/tenforce/data.ai-proficiant.eu-generated/master{{ documentroot }}/shacl/{{ metadata.filename }}-SHACL.ttl" target="_blank">{{ documentroot }}/shacl/{{ metadata.filename }}-SHACL.ttl</a></p>
                 {% endblock %}
             </div>
+            </section>
+
           </div>
           {# <div class="col--3-12 col--12-12--s col--4-12--m push--1-12 push--reset--m" id="sideNav">
               <nav class="side-navigation js-sticky region" id="sideNav">
