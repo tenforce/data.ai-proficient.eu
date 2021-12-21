@@ -209,21 +209,24 @@
                 {% endblock %}
             </section>
 
-            <div class="region region--no-space-top typography" id="license">
-              <h2 class="h2">Licentie</h2>
+            <section>
+              <h2>Licentie</h2>
               {% block license %}
               <p><span rel="dct:type" property="dct:title" href="http://purl.org/dc/dcmitype/Text" xmlns:dct="http://purl.org/dc/terms/">This specification</span> of <a rel="cc:attributionURL" property="cc:attributionName" href="ORGANISATION" xmlns:cc="http://creativecommons.org/ns#">ORGANISATION</a> is published under <a href="{{ metadata.license }}" rel="license">"CC0"</a>.</p>
               {% endblock %}
-            </div>
-            <div class="region region--no-space-top typography" id="conformance">
-              <h2 class="h2" id="conformance" aria-level="1" role="heading">Conformiteit</h2>
-              {% block conformance %}
-              <p>An implementation is conformant with this application profile if it satisfies <a href="/doc/conformance">these rules</a>.</p>
-              {% endblock %}
-            </div>
+            </section>
+
+            <section id="conformance">
+                <h2 id="conformance" aria-level="1" role="heading">Conformance</h2>
+                {% block conformance %}
+                <p>An implementation is conformant with this application profile if it satisfies <a href="/doc/conformance">these rules</a>.</p>
+                {% endblock %}
+            </section>
+
             <section>
+            <h2>Overview</h2>
               <div class="region region--no-space-top" id="overview">
-                <h2 class="h2">Overview</h2>
+                {# <h2 class="h2">Overview</h2> #}
                 <div class="grid">
                   <div class="col--9-12 col--1-1--s typography">
                     {% if ( ( classes | length > 0)   ) %}
@@ -251,16 +254,19 @@
                   </div>
                 </div>
               </div>
-            </section>
+            
             
               <div class="region region--no-space-top">
               <a href="https://tenforce.github.io/data.ai-proficiant.eu-generated{{ documentroot }}/html/overview.jpg" target="_blank">
                 <img src="https://tenforce.github.io/data.ai-proficiant.eu-generated{{ documentroot }}/html/overview.jpg" />
               </a>
             </div>
+            </section>
+
             <section>
+            <h2>Entities</h2>
               <div class="region region--no-space-top">
-                <h2 class="h2">Entities</h2>
+                {# <h2 class="h2">Entities</h2> #}
               </div>
               {% for entity in classes | sort(attribute=sortattr) %}
                 <div class="region region--no-space-top">
