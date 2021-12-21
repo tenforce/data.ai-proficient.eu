@@ -227,125 +227,130 @@
               <p>An implementation is conformant with this application profile if it satisfies <a href="/doc/conformance">these rules</a>.</p>
               {% endblock %}
             </div>
-            <section class="informative">
-            <div class="region region--no-space-top" id="overview">
-              <h2 class="h2">Overview</h2>
-              <div class="grid">
-                <div class="col--9-12 col--1-1--s typography">
-                  {% if ( ( classes | length > 0)   ) %}
-                  <div class="region region--no-space-top">
-                    <p>This document describes the usage of the following entities for a correct usage of the Application Profile:
-                      <br />
-                      |
-                      {%- for class in classes |sort(attribute=sortattr) %}
-                      <a href="#{{ class.name }}">{{ class.label[language] }}</a> |
-                      {%- endfor %}
-                    </p>
+            <section>
+              <div class="region region--no-space-top" id="overview">
+                <h2 class="h2">Overview</h2>
+                <div class="grid">
+                  <div class="col--9-12 col--1-1--s typography">
+                    {% if ( ( classes | length > 0)   ) %}
+                    <div class="region region--no-space-top">
+                      <p>This document describes the usage of the following entities for a correct usage of the Application Profile:
+                        <br />
+                        |
+                        {%- for class in classes |sort(attribute=sortattr) %}
+                        <a href="#{{ class.name }}">{{ class.label[language] }}</a> |
+                        {%- endfor %}
+                      </p>
+                    </div>
+                    {% endif %}
+                    {% if ( ( datatypes | length ) > 0 ) %}
+                    <div class="region region--no-space-top">
+                      <p> This document describes the usage of the following datatypes for a correct usage of the Application Profile:
+                        <br />
+                        |
+                        {%- for datatype in datatypes |sort(attribute=sortattr) %}
+                        <a href="#{{ datatype.name }}">{{ datatype.label[language] }}</a> |
+                        {%- endfor %}
+                      </p>
+                    </div>
+                    {% endif %}
                   </div>
-                  {% endif %}
-                  {% if ( ( datatypes | length ) > 0 ) %}
-                  <div class="region region--no-space-top">
-                    <p> This document describes the usage of the following datatypes for a correct usage of the Application Profile:
-                      <br />
-                      |
-                      {%- for datatype in datatypes |sort(attribute=sortattr) %}
-                      <a href="#{{ datatype.name }}">{{ datatype.label[language] }}</a> |
-                      {%- endfor %}
-                    </p>
-                  </div>
-                  {% endif %}
                 </div>
               </div>
-            </div>
             </section>
             
-            <div class="region region--no-space-top">
+              <div class="region region--no-space-top">
               <a href="https://tenforce.github.io/data.ai-proficiant.eu-generated{{ documentroot }}/html/overview.jpg" target="_blank">
-                 <img src="https://tenforce.github.io/data.ai-proficiant.eu-generated{{ documentroot }}/html/overview.jpg" />
+                <img src="https://tenforce.github.io/data.ai-proficiant.eu-generated{{ documentroot }}/html/overview.jpg" />
               </a>
             </div>
-            <div class="region region--no-space-top">
-              <h2 class="h2">Entities</h2>
-            </div>
-            {% for entity in classes | sort(attribute=sortattr) %}
+            <section>
               <div class="region region--no-space-top">
-              <h3 class="h3" id="{{ entity.name }}"><a href="{{ entity.uri }}" data-toggle="tooltip" data-content="{{ entity.uri }}" data-placement="right">{{ entity.label[language] }}</a></h3>
+                <h2 class="h2">Entities</h2>
+              </div>
+              {% for entity in classes | sort(attribute=sortattr) %}
                 <div class="region region--no-space-top">
-                  <dl>
-                    <dt>Description</dt><dd>{{ entity.description[language] }}</dd>
-                    {% if entity.usage[language] %}
-                    <dt>Usage</dt><dd>{{ entity.usage[language] | safe }}</dd>
-                    {% endif %}
-		    {% if ((entity.parents | length) > 0 ) %}
-		    <dt>Subclass of<dt><dd>
-                        {%- for parent in entity['parents'] %}
-                        <a href="{{ parent.scoped_uri}}">{{ parent.label }}</a>{% if not loop.last %}, {% endif %}
-                    	{%- endfor %}
-		   </dd>
-                    {% endif %}
-                    <dt>Properties</dt>
-		    {% if ((entity.properties | length) > 0 ) %}
-                    <dd>For this entity the following properties are defined:
-                    {%- for prop in entity['properties'] | sort(attribute=sortattr) %}
-                      <a href="#{{ (entity.name ~ ':' ~ prop.name) | urlencode }}">{{ prop.label[language] }}</a>{% if not loop.last %}, {% endif %}
-                    {%- endfor %}.</dd>
-                    {% else %}
-                    <dd>No properties have been defined for this entity.</dd>
-                    {% endif %}
-                  </dl>
-                  <dd>Add an issue for this entity <a href="https://github.com/Informatievlaanderen/purl-eu/issues/new?title=Issue%20for%20{{ entity.name }}&body=Explain%20your%20issue">here</a>.</dd>
-                </div>
-		{% if ((entity.properties | length) > 0 ) %}
-                <div class="u-table-overflow">
-                  <table class="data-table">
-                    <thead>
-                      <tr class="data-table__header">
-                        <th class="data-table__header-title--sortable"></th>
-                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Property</th>
-                        <th class="data-table__header-title--sortable">Expected Range</th>
-                        <th class="data-table__header-title--sortable">Cardinality</th>
-                        <th class="data-table__header-title--sortable">Description</th>
-                        <th class="data-table__header-title--sortable">Usage</th>
-                        <th class="data-table__header-title--sortable">Codelist</th>
-                      </tr>
-                    </thead>
+                <h3 class="h3" id="{{ entity.name }}"><a href="{{ entity.uri }}" data-toggle="tooltip" data-content="{{ entity.uri }}" data-placement="right">{{ entity.label[language] }}</a></h3>
+                  <div class="region region--no-space-top">
+                    <dl>
+                      <dt>Description</dt><dd>{{ entity.description[language] }}</dd>
+                      {% if entity.usage[language] %}
+                      <dt>Usage</dt><dd>{{ entity.usage[language] | safe }}</dd>
+                      {% endif %}
+          {% if ((entity.parents | length) > 0 ) %}
+          <dt>Subclass of<dt><dd>
+                          {%- for parent in entity['parents'] %}
+                          <a href="{{ parent.scoped_uri}}">{{ parent.label }}</a>{% if not loop.last %}, {% endif %}
+                        {%- endfor %}
+        </dd>
+                      {% endif %}
+                      <dt>Properties</dt>
+          {% if ((entity.properties | length) > 0 ) %}
+                      <dd>For this entity the following properties are defined:
+                      {%- for prop in entity['properties'] | sort(attribute=sortattr) %}
+                        <a href="#{{ (entity.name ~ ':' ~ prop.name) | urlencode }}">{{ prop.label[language] }}</a>{% if not loop.last %}, {% endif %}
+                      {%- endfor %}.</dd>
+                      {% else %}
+                      <dd>No properties have been defined for this entity.</dd>
+                      {% endif %}
+                    </dl>
+                    <dd>Add an issue for this entity <a href="https://github.com/Informatievlaanderen/purl-eu/issues/new?title=Issue%20for%20{{ entity.name }}&body=Explain%20your%20issue">here</a>.</dd>
+                  </div>
+      {% if ((entity.properties | length) > 0 ) %}
+                  <div class="u-table-overflow">
+                    <table class="data-table">
+                      <thead>
+                        <tr class="data-table__header">
+                          <th class="data-table__header-title--sortable"></th>
+                          <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Property</th>
+                          <th class="data-table__header-title--sortable">Expected Range</th>
+                          <th class="data-table__header-title--sortable">Cardinality</th>
+                          <th class="data-table__header-title--sortable">Description</th>
+                          <th class="data-table__header-title--sortable">Usage</th>
+                          <th class="data-table__header-title--sortable">Codelist</th>
+                        </tr>
+                      </thead>
 
-                    <tbody class="supertype">
-                    {% for prop in entity['properties'] | sort(attribute=sortattr) %}
-                      <tr id="{{ (entity.name ~ ':' ~ prop.name) | urlencode }}" typeof="rdfs:Property" resource="{{ prop.uri }}">
-                        <td><a href="https://github.com/Informatievlaanderen/purl-eu/issues/new?title=Issue%20for%20{{ prop.name }}&body=Explain%20your%20issue"><i class="icon"></i></a></td>
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="{{ prop.uri }}" data-toggle="tooltip" data-content="{{ prop.uri }}" data-placement="right">
-                            {{ prop.label[language] }}</a>
-                          </code>
-                        </td>
-                        <td>
-                          {% for range in prop.scopedrange %}
-			    {% if range['range_uri'] == range['range_puri'] %}
-			    <a href="{{ range['range_uri'] }}" data-toggle="tooltip" data-content="{{ range['range_puri'] }}" data-placement="right">{{ range['range_label'][language] }}</a>
-                            {% else %}
-			    <a href="{{ range['range_uri'] }}" data-placement="right">{{ range['range_label'][language] }}</a>
-			    {% endif %}
-                          {% endfor %}
-                        </td>
-                        <td>{{ prop.cardinality }}</td>
-                        <td property="rdfs:comment">{{ prop.description[language] }}</td>
-                        <td property="skos:scopeNote">{{ prop.usage[language] | safe }}</td>
-                        <td>{% if prop['codelist_uri'] %}<a href="{{ prop['codelist_uri'] }}">Link</a>{% endif %}</td>
-                      </tr>
-                    {% endfor %}
-                    </tbody>
-                  </table>
-                </div>
-      			  {% endif %}
-            </div>
-            {% endfor %}
-
+                      <tbody class="supertype">
+                      {% for prop in entity['properties'] | sort(attribute=sortattr) %}
+                        <tr id="{{ (entity.name ~ ':' ~ prop.name) | urlencode }}" typeof="rdfs:Property" resource="{{ prop.uri }}">
+                          <td><a href="https://github.com/Informatievlaanderen/purl-eu/issues/new?title=Issue%20for%20{{ prop.name }}&body=Explain%20your%20issue"><i class="icon"></i></a></td>
+                          <td>
+                            <code property="rdfs:label">
+                              <a href="{{ prop.uri }}" data-toggle="tooltip" data-content="{{ prop.uri }}" data-placement="right">
+                              {{ prop.label[language] }}</a>
+                            </code>
+                          </td>
+                          <td>
+                            {% for range in prop.scopedrange %}
+            {% if range['range_uri'] == range['range_puri'] %}
+            <a href="{{ range['range_uri'] }}" data-toggle="tooltip" data-content="{{ range['range_puri'] }}" data-placement="right">{{ range['range_label'][language] }}</a>
+                              {% else %}
+            <a href="{{ range['range_uri'] }}" data-placement="right">{{ range['range_label'][language] }}</a>
+            {% endif %}
+                            {% endfor %}
+                          </td>
+                          <td>{{ prop.cardinality }}</td>
+                          <td property="rdfs:comment">{{ prop.description[language] }}</td>
+                          <td property="skos:scopeNote">{{ prop.usage[language] | safe }}</td>
+                          <td>{% if prop['codelist_uri'] %}<a href="{{ prop['codelist_uri'] }}">Link</a>{% endif %}</td>
+                        </tr>
+                      {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                {% endif %}
+              </div>
+              {% endfor %}
+            </section>
             {% if datatypes %}
-            <div class="region region--no-space-top">
-              <h2 class="h2">Datatypes</h2>
-            </div>
+            <section>
+              <div class="region region--no-space-top">
+                <h2 class="h2">Datatypes</h2>
+              </div>
+            </section>
+            
+
             {% for entity in datatypes | sort(attribute=sortattr)%}
             <div class="region region--no-space-top">
               {% if entity.scopeduri %}
