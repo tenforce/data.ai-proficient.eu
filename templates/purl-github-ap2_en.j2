@@ -8,6 +8,27 @@
 <head>
   {% set name = metadata.title|lower|replace(' ', '-') %}
   <title>{{ metadata.title }}</title>
+  <script
+      src="https://www.w3.org/Tools/respec/respec-w3c"
+      class="remove"
+      defer
+    ></script>
+    <script class="remove">
+      // All config options at https://respec.org/docs/
+      var respecConfig = {
+        //status: {{metadata.status}},
+        status: "ED",
+        specStatus: "ED",
+        latestVersion: "https://respec.org/docs/",
+        github: "tenforce/data.ai-proficient.eu",
+        shortName: "ai-proficient",
+        xref: "web-platform",
+        group: "my-working-group",
+        highlightVars: true,
+        doJsonLd: true,
+       
+      };
+    </script>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -170,7 +191,7 @@
               {% endblock %}
               </div>
             </div>
-
+            <section id="abstract">
             <div class="region region--no-space-top typography" id="summary">
                 <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">Samenvatting</h2>
                 {% block summary %}
@@ -179,7 +200,8 @@
                   {% endif %}
                 {% endblock %}
             </div>
-
+            </section>
+            <section id="sotd">
             <div class="region region--no-space-top typography" id="status">
               <section class="introductory" id="sotd" typeof="bibo:Chapter" resource="#ref" rel="bibo:Chapter">
                 <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">Status van dit document</h2>
@@ -193,6 +215,7 @@
                 {% endblock %}
               </section>
             </div>
+            </section>
 
             <div class="region region--no-space-top typography" id="license">
               <h2 class="h2">Licentie</h2>
@@ -455,8 +478,54 @@
     </div>
   </div>
   </div>
+  <section class="informative">
+      <h2>Introduction</h2>
+      <p>Some informative introductory text.</p>
+      <aside class="note" title="A useful note">
+        <p>I'm a note!</p>
+      </aside>
+    </section>
+    <section>
+      <h2>A section</h2>
+      <aside class="example">
+        <p>This is an example.</p>
+        <pre class="js">
+        // Automatic syntax highlighting
+        function someJavaScript(){}
+        </pre>
+      </aside>
+      <section>
+        <h3>I'm a sub-section</h3>
+        <p class="issue" data-number="121">
+          <!-- Issue can automatically be populated from GitHub -->
+        </p>
+      </section>
+    </section>
+    <section data-dfn-for="Foo">
+      <h2>Start your spec!</h2>
+      <pre class="idl">
+        [Exposed=Window]
+        interface Foo {
+        attribute DOMString bar;
+        undefined doTheFoo();
+        };
+      </pre>
+      <p>The <dfn>Foo</dfn> interface represents a {{Foo}}.</p>
+      <p>
+        The <dfn>doTheFoo()</dfn> method does the foo. Call it by running
+        {{Foo/doTheFoo()}}.
+      </p>
+      <ol class="algorithm">
+        <li>A |variable:DOMString| can be declared like this.</li>
+      </ol>
+    </section>
+    <section id="conformance">
+      <p>
+        This is required for specifications that contain normative material.
+      </p>
+    </section>
 
-  <script src="https://dij151upo6vad.cloudfront.net/2.latest/js/vlaanderen-ui.js"></script>
+  <!--<script src="https://dij151upo6vad.cloudfront.net/2.latest/js/vlaanderen-ui.js"></script> -->
 
   <style>
     @media screen {  /* hide from IE3 */
