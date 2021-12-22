@@ -112,15 +112,16 @@
           </dl>
         </div>
       </div>
+      </div>
     </section>
-            <section>
-              <h2>Introduction <h2>
-                    {% block introduction %} 
-                    <p>This document describes an <strong>application profile</strong>, in this case <strong>{{ metadata.title }}</strong>. The application profile specifies a semantic data model covering a set of usecases. The specification consists of terms with their constraints (cardinalities, codelists, usage guidelines). </p> 
-                    {% endblock %}
-            </section>
-            <section id="abstract"> {% block summary %} {% if metadata.description %} {{ metadata.description[language] }} {% endif %} {% endblock %} </section>
-          </div>
+    <section>
+      <h2>Introduction</h2>
+            {% block introduction %} 
+            <p>This document describes an <strong>application profile</strong>, in this case <strong>{{ metadata.title }}</strong>. The application profile specifies a semantic data model covering a set of usecases. The specification consists of terms with their constraints (cardinalities, codelists, usage guidelines). </p> 
+            {% endblock %}
+    </section>
+    <section id="abstract"> {% block summary %} {% if metadata.description %} {{ metadata.description[language] }} {% endif %} {% endblock %} </section>
+          
           <section id="sotd"> {% block status %} <p> This application profile has the status <a href="{{metadata.status }}">{{ metadata.statuslabel }}</a> publised at {{ metadata.issued }}. </p>
             <p> Information about the process and the decisions involved in the creation of this specification are consultable at the <a href="{{metadata.standaardregisterurl}}">registry of standards</a>. </p> {% endblock %}
           </section>
