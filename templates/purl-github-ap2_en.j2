@@ -3,8 +3,6 @@
 {% set language = "en" %}
 {% set sortattr = "sort" %}
 
-<html xml:lang="en" lang="en" dir="ltr" typeof="bibo:Document " about="" property="dcterms:language" content="en" prefix="dcterms: http://purl.org/dc/terms/ bibo: http://purl.org/ontology/bibo/ schema: http://schema.org/ w3p: http://www.w3.org/2001/02pd/rec54#" xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
   {% set name = metadata.title|lower|replace(' ', '-') %}
     <meta charset="utf-8" />
@@ -25,12 +23,11 @@
         group: "my-working-group",
       };
     </script>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="https://dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui.css" />
-  <link rel="stylesheet" href="https://dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui-corporate.css" />
-
+  
   <link rel="icon" sizes="192x192" href="/cms/icons/PurlLogo.jpg" />
   <link rel="apple-touch-icon" href="/cms/icons/PurlLogo.jpg" />
   <link rel="apple-touch-icon" sizes="76x76" href="/cms/icons/PurlLogo.jpg" />
@@ -41,16 +38,22 @@
   <meta name="msapplication-square150x150logo" content="/cms/icons/PurlLogo.jpg" />
   <meta name="msapplication-wide310x150logo" content="/cms/icons/PurlLogo.jpg" />
   <meta name="msapplication-square310x310logo" content="/cms/icons/PurlLogo.jpg" />
+
   <meta name="msapplication-TileColor" content="#7ED956" />
+
 </head>
 
 <body>
-  <div style="min-height:44px;;" id="purl-header" class="header">
-    <!-- insert your global header here -->
-    <title>Purl</title>
-    <i class="logo">PurlLogo</i>
-    <!-- end global header-->
-  </div>
+    <section>
+        <h2>Purl</h2>
+        <div style="min-height:44px;;" id="purl-header" class="header">
+            <!-- insert your global header here -->
+            <title>Purl</title>
+            <i class="logo">PurlLogo</i>
+            <!-- end global header-->
+        </div>
+    </section>
+  
 
   <!-- Start page content -->
   <div class="page">
@@ -59,12 +62,9 @@
         <a rel="nofollow noreferrer" href="#main">Overslaan en naar de algemene inhoud gaan</a>
       </div>
     </div>
-    <div class="page">
-      <div class="region">
-        <div class="layout layout--wide">
-          <div class="grid u-hr">
+            <section>
+            <h2 class="h1">{{ metadata.title }}</h2>
             <div class="col--9-12 col--1-1--s">
-              <h1 class="h1">{{ metadata.title }}</h1>
 
               <div class="head" role="status" id="status">
               <dl>
@@ -165,13 +165,7 @@
 		</dd>
               </dl>
               </div>
-
-
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <div id="main" itemprop="mainContentOfPage" role="main" tabindex="-1" class="main-content">
       <div class="layout layout--wide">
@@ -187,7 +181,8 @@
               {% endblock %}
               </div>
             </div>
-
+        </section>
+        
             <section id="abstract">
                 {% block summary %}
                   {% if metadata.description %}
@@ -454,109 +449,8 @@
             </section>
 
           </div>
-          {# <div class="col--3-12 col--12-12--s col--4-12--m push--1-12 push--reset--m" id="sideNav">
-              <nav class="side-navigation js-sticky region" id="sideNav">
-                  <div class="side-navigation__content js-scrollspy">
-                      <div class="side-navigation__group">
-                          <ul>
-                              <li class="side-navigation__item">
-                                  <a href="#introduction">Introduction</a>
-                              </li>
-                              <li class="side-navigation__item">
-                                  <a href="#summary">Summary</a>
-                              </li>
-                              <li class="side-navigation__item">
-                                  <a href="#status">Status of this document</a>
-                              </li>
-                              <li class="side-navigation__item">
-                                  <a href="#license">License</a>
-                              </li>
-                              <li class="side-navigation__item">
-                                  <a href="#conformance">Conformance</a>
-                              </li>
-                              <li class="side-navigation__item">
-                                  <a href="#overview">Overview</a>
-                              </li>
-                              <li class="side-navigation__item">
-                                  <a href="#jsonld">JSON-LD Context</a>
-                              </li>
-                              <li class="side-navigation__item">
-                                  <a href="#shacl">SHACL template</a>
-                              </li>
-                          </ul>
-                      </div>
-                  </div>
-              </nav>
-          </div> #}
     <!-- End page content -->
       </div>
     </div>
-  </div>
-  </div>
-
-  {# <script src="https://dij151upo6vad.cloudfront.net/2.latest/js/vlaanderen-ui.js"></script>
-
-  <style>
-    @media screen {  /* hide from IE3 */
-      a[href]:hover { background: #ffa }
-    }
-
-    p {
-      text-align: justify;
-    }
-
-    tr:nth-child(even) td     { background-color:#eee; }
-
-    dt, dd { margin-top: 0; margin-bottom: 0 } /* opera 3.50 */
-    dt { font-weight: bold }
-
-    pre, code { font-family: monospace } /* navigator 4 requires this */
-
-    em {
-          font-style: italic;
-    }
-
-    img {
-       width: 100%;
-    }
-
-    .tooltip {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 800;
-      display: none;
-      max-width: 128rem;
-      background: #fff;
-      border: 1px solid #ccc;
-      margin-bottom: 1.5rem;
-      text-align: center;
-      font-size: 1.4rem;
-      color: #000;
-      background-clip: padding-box;
-    }
-
-    .icon {
-      content: url("/cms/icons/comment.svg");
-      display: block;
-    }
-
-    .logo {
-      content: url("/cms/icons/PurlLogo.jpg");
-      height: 20%;
-      min-width: 10px;
-      min-height: 10px;
-      position:absolute;
-      top: 20px;
-      left: 20px;
-    }
-
-    .header {
-      margin: 0;
-      padding: 0;
-      background-color: white;
-    }
-
-  </style> #}
 </body>
 </html>
