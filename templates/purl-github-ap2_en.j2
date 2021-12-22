@@ -1,4 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> {% set language = "en" %} {% set sortattr = "sort" %} <head> {% set name = metadata.title|lower|replace(' ', '-') %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> {% set language = "en" %} {% set sortattr = "sort" %} 
+<head> {% set name = metadata.title|lower|replace(' ', '-') %}
   <meta charset="utf-8" />
   <title>{{ metadata.title }}</title>
   <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
@@ -44,7 +45,7 @@
   <div class="page">
     <div class="layout layout--wide">
       <div class="skiplink">
-        <a rel="nofollow noreferrer" href="#main">Overslaan en naar de algemene inhoud gaan</a>
+        <a rel="nofollow noreferrer" href="#abstract">Overslaan en naar de algemene inhoud gaan</a>
       </div>
     </div>
     <section>
@@ -114,9 +115,9 @@
     </section>
             <section>
               <h2>Introduction <h2>
-                  <div class="region" id="introduction">
-                    <div class="introduction typography"> {% block introduction %} <p>This document describes an <strong>application profile</strong>, in this case <strong>{{ metadata.title }}</strong>. The application profile specifies a semantic data model covering a set of usecases. The specification consists of terms with their constraints (cardinalities, codelists, usage guidelines). </p> {% endblock %} </div>
-                  </div>
+                    {% block introduction %} 
+                    <p>This document describes an <strong>application profile</strong>, in this case <strong>{{ metadata.title }}</strong>. The application profile specifies a semantic data model covering a set of usecases. The specification consists of terms with their constraints (cardinalities, codelists, usage guidelines). </p> 
+                    {% endblock %}
             </section>
             <section id="abstract"> {% block summary %} {% if metadata.description %} {{ metadata.description[language] }} {% endif %} {% endblock %} </section>
           </div>
@@ -156,11 +157,9 @@
 									<h2 class="h2">Entities</h2> #} </div> {% for entity in classes | sort(attribute=sortattr) %} 
               <section>
                 <h3 class="h3" id="{{ entity.name }}">
-                <div class="region region--no-space-top">
                   {# <h3 class="h3" id="{{ entity.name }}"> #}
                     <a href="{{ entity.uri }}" data-toggle="tooltip" data-content="{{ entity.uri }}" data-placement="right">{{ entity.label[language] }}</a>
                   </h3>
-                  <div class="region region--no-space-top">
                     <dl>
                       <dt>Description</dt>
                       <dd>{{ entity.description[language] }}</dd> {% if entity.usage[language] %} <dt>Usage</dt>
@@ -203,8 +202,9 @@
                     </table>
                   </div> {% endif %}
                 </div>
-            </section> {% endfor %}
-          </section> {% if datatypes %} <section>
+              </section> {% endfor %}
+          </section> {% if datatypes %} 
+          <section>
             <h2>Datatypes</h2>
             <div class="region region--no-space-top"> {# 
 									
