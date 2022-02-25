@@ -1,5 +1,14 @@
 [  
   {
+    "urlref": "/doc/applicationprofile/core/working-draft/2022-03-01",
+    "repository": "https://github.com/tenforce/ai-proficient-thema",
+    "branchtag": "master",
+    "name": "core",
+    "filename": "config/core.json",
+    "navigation": {},
+    "dummy": "22"
+  },
+  {
     "urlref": "/doc/applicationprofile/netex-belgium/vehiclescheduling-ap/",
     "seealso": "/doc/applicationprofile/netex-belgium/vehiclescheduling-ap/working-draft/2021-06-01",
     "type": "ap",
