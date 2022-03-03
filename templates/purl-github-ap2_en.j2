@@ -683,91 +683,78 @@
     <tbody>
         <tr>
             <td>
-                [Interface], [Dictionary], [Enum] or [IDL type]
+                Normal Reference
             </td>
             <td>
-                <code>{{ Identifier }}</code>
+                <code>[[SHORTNAME]]</code>
             </td>
             <td>
-                <code>{{ PaymentRequest }}</code>
-                <br>
-                <code>{{ unrestricted double }}</code>
-                <br>
-                <code>{{ long long }}</code>
+                <code>[[HTML]]</code>
             </td>
         </tr>
         <tr>
             <td>
-                [Attribute]
+                Expanded Reference
             </td>
             <td>
-                <code>{{ Identifier/attributeName }}</code>
+                <code>[[[SHORTNAME]]]</code>
             </td>
             <td>
-                <code>{{ PaymentRequest/id }}</code>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                [Operation or Method]
-            </td>
-            <td>
-                <code>{{ Identifier/methodName()}}</code>
+                <code>[[[FULLSCREEN]]]</code>, <code>[[[fullscreen API]]]</code>
                 <br>
-                <code>{{ Identifier/methodName(someArg)}}</code>
-            </td>
-            <td>
-                <code>{{ PaymentRequest/show()}}</code>
+                are expanded and rendered as
                 <br>
-                <code>{{ PaymentRequest/show(detailsPromise)}}</code>
+                <code>Full Screen API</code>
             </td>
         </tr>
         <tr>
             <td>
-                [Static Attribute]
+                Informative spec
             </td>
             <td>
-                <code>{{ Identifier.attribute }}</code>
+                <code>[[?SHORTNAME]]</code>
             </td>
             <td>
-                <code>{{ SomeInterface.someAttribute }}</code>
+                Payments can be useful <code>[[?PAYMENT-REQUEST]]</code>.
             </td>
         </tr>
         <tr>
             <td>
-                [Static Operation or Static Method]
+                Escaped reference
             </td>
             <td>
-                <code>{{ Identifier.methodName()}}</code>
+                <code>[[\anything]]</code>
+            </td>
+            <td>
+                This is not a reference. It is <code>[[\something else]]</code>.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Inner-document expansion
+            </td>
+            <td>
+                <code>[[[#fragment]]]</code>
+            </td>
+            <td>
+                <code>See [[[#installability-signals]]]</code>
                 <br>
-                <code>{{ Identifier.methodName(arg)}}</code>
-            </td>
-            <td>
-                <code>{{ URL.createObjectURL()}}</code>
+                is expanded and rendered as
                 <br>
-                <code>{{ URL.createObjectURL(obj)}}</code>
+                <code>See § 2.6 Installability signals</code>.
             </td>
         </tr>
         <tr>
             <td>
-                [Enum Value]
+                Multi-page reference
             </td>
             <td>
-                <code>{{ Identifier/"value" }}</code>
+                <code>[[SHORTNAME/page#fragment]]</code>
             </td>
             <td>
-                <code>{{ PaymentComplete/"success" }}</code>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                [DOM Exception]
-            </td>
-            <td>
-                <code>{{"Identifier" }}</code>
-            </td>
-            <td>
-                <code>{{"NotAllowedError" }}</code>
+                <code>[[SOMESPEC/foo.html#bar]]</code>
+                <br>
+                (<strong>Not recommended</strong>, use only if you really need it!)
             </td>
         </tr>
     </tbody>
