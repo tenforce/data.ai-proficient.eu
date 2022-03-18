@@ -40,13 +40,11 @@
     <meta name="msapplication-TileColor" content="#7ED956" />
 </head>
 <body>
-    <div>
-        <div style="min-height:44px;;" id="purl-header" class="header">
-            <!-- insert your global header here -->
-            <title>Purl</title>
-            <i class="logo">PurlLogo</i>
-            <!-- end global header-->
-        </div>
+    <div style="min-height:44px;;" id="purl-header" class="header">
+        <!-- insert your global header here -->
+        <title>Purl</title>
+        <i class="logo">PurlLogo</i>
+        <!-- end global header-->
     </div>
     <!-- Start page content -->
     <div class="page">
@@ -114,12 +112,14 @@
                                                 {% if author.affiliation.website and author.affiliation.name %}
                                                     - <a href="{{ author.affiliation.website }}"
     class="p-org org h-org h-card"
-    rel="foaf:workplaceHomepage">{{ author.affiliation.name }}</a>
-                                                {% elif author.affiliation.name %}
-                                                    - <span class="p-org org h-org h-card">{{ author.affiliation.name }}</span>
-                                                {% endif %}
-                                                {% if author.email %}
-                                                    - <span class="ed_mailto">
+    rel="foaf:workplaceHomepage">{{ author.affiliation.name }}
+                                                </a>
+                                            {% elif author.affiliation.name %}
+                                                - <span class="p-org org h-org h-card">{{ author.affiliation.name }}</span>
+                                            {% endif %}
+                                            {% if author.email %}
+                                                -
+                                                <span class="ed_mailto">
                                                     <a href="mailto:{{ author.email }}"
                                                        rel="foaf:mbox"
                                                        class="u-email email">{{ author.email }}</a>
@@ -460,6 +460,7 @@
     </div>
 </section>
 {% endfor %}
+</section>
 {% if datatypes %}
     <section>
         <h2>
