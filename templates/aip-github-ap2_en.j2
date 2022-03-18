@@ -460,7 +460,6 @@
     </div>
 </section>
 {% endfor %}
-</section>
 {% if datatypes %}
     <section>
         <h2>
@@ -473,148 +472,148 @@
             </h2>
             #}
         </div>
-    </section>
-    {% for entity in datatypes | sort(attribute=sortattr)%}
-        <div class="region region--no-space-top">
+        {% for entity in datatypes | sort(attribute=sortattr)%}
             <section>
-                {% if entity.scopeduri %}
-                    <h3 class="h3" id="{{ entity.name }}">
-                        <a href="{{ entity.scopeduri }}"
-                           data-toggle="tooltip"
-                           data-content="{{ entity.uri }}"
-                           data-placement="right">{{ entity.label[language] }}</a>
-                    </h3>
-                {% else %}
-                    <h3 class="h3" id="{{ entity.name }}">
-                        <a href="{{ entity.uri }}"
-                           data-toggle="tooltip"
-                           data-content="{{ entity.uri }}"
-                           data-placement="right">{{ entity.label[language] }}</a>
-                    </h3>
-                {% endif %}
                 <div class="region region--no-space-top">
-                    <dl>
-                        <dt>
-                            Beschrijving
-                        </dt>
-                        <dd>
-                            {{ entity.description[language] }}
-                        </dd>
-                        {% if entity.usage[language] %}
+                    {% if entity.scopeduri %}
+                        <h3 class="h3" id="{{ entity.name }}">
+                            <a href="{{ entity.scopeduri }}"
+                               data-toggle="tooltip"
+                               data-content="{{ entity.uri }}"
+                               data-placement="right">{{ entity.label[language] }}</a>
+                        </h3>
+                    {% else %}
+                        <h3 class="h3" id="{{ entity.name }}">
+                            <a href="{{ entity.uri }}"
+                               data-toggle="tooltip"
+                               data-content="{{ entity.uri }}"
+                               data-placement="right">{{ entity.label[language] }}</a>
+                        </h3>
+                    {% endif %}
+                    <div class="region region--no-space-top">
+                        <dl>
                             <dt>
-                                Gebruik
+                                Beschrijving
                             </dt>
                             <dd>
-                                {{ entity.usage[language] | safe }}
+                                {{ entity.description[language] }}
                             </dd>
-                        {% endif %}
-                        {% if ((entity.parents | length) > 0 ) %}
-                            <dt>
-                                Subklasse van
+                            {% if entity.usage[language] %}
                                 <dt>
-                                    <dd>
-                                        {%- for parent in entity['parents'] %} <a href="{{ parent.scoped_uri }}">{{ parent.label }}</a>
-                                        {% if not loop.last %},{% endif %}
-                                    {%- endfor %}
+                                    Gebruik
+                                </dt>
+                                <dd>
+                                    {{ entity.usage[language] | safe }}
                                 </dd>
                             {% endif %}
-                            <dt>
-                                Eigenschappen
-                            </dt>
-                            {% if ((entity.properties | length) > 0 ) %}
+                            {% if ((entity.parents | length) > 0 ) %}
+                                <dt>
+                                    Subklasse van
+                                    <dt>
+                                        <dd>
+                                            {%- for parent in entity['parents'] %} <a href="{{ parent.scoped_uri }}">{{ parent.label }}</a>
+                                            {% if not loop.last %},{% endif %}
+                                        {%- endfor %}
+                                    </dd>
+                                {% endif %}
+                                <dt>
+                                    Eigenschappen
+                                </dt>
+                                {% if ((entity.properties | length) > 0 ) %}
+                                    <dd>
+                                        Voor dit datatype zijn de volgende eigenschappen gedefinieerd: {%- for prop in entity['properties'] | sort(attribute=sortattr) %} <a href="#{{ (entity.name ~ ':' ~ prop.name) | urlencode }}">{{ prop.label[language] }}</a>
+                                        {% if not loop.last %},{% endif %}
+                                    {%- endfor %}.
+                                </dd>
+                            {% else %}
                                 <dd>
-                                    Voor dit datatype zijn de volgende eigenschappen gedefinieerd: {%- for prop in entity['properties'] | sort(attribute=sortattr) %} <a href="#{{ (entity.name ~ ':' ~ prop.name) | urlencode }}">{{ prop.label[language] }}</a>
-                                    {% if not loop.last %},{% endif %}
-                                {%- endfor %}.
-                            </dd>
-                        {% else %}
-                            <dd>
-                                Voor dit datatype zijn geen eigenschappen gedefinieerd.
-                            </dd>
-                        {% endif %}
-                    </dl>
-                    <dd>
-                        Add an issue for this property <a href="https://github.com/Informatievlaanderen/purl-eu/issues/new?title=Issue%20for%20{{ entity.name }}&body=Explain%20your%20issue">here</a>.
-                    </dd>
-                </div>
-                {% if ((entity.properties | length) > 0 ) %}
-                    <div class="u-table-overflow">
-                        <table class="data-table">
-                            <thead>
-                                <tr class="data-table__header">
-                                    <th class="data-table__header-title--sortable">
-                                    </th>
-                                    <th class="data-table__header-title--sortable data-table__header-title--sortable-active">
-                                        Eigenschap
-                                    </th>
-                                    <th class="data-table__header-title--sortable">
-                                        Verwacht Type
-                                    </th>
-                                    <th class="data-table__header-title--sortable">
-                                        Kardinaliteit
-                                    </th>
-                                    <th class="data-table__header-title--sortable">
-                                        Beschrijving
-                                    </th>
-                                    <th class="data-table__header-title--sortable">
-                                        Gebruik
-                                    </th>
-                                    <th class="data-table__header-title--sortable">
-                                        Codelijst
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody class="supertype">
-                                {% for prop in entity['properties'] | sort(attribute=sortattr) %}
-                                    <tr id="{{ (entity.name ~ ':' ~ prop.name ) | urlencode }}"
-                                        typeof="rdfs:Property"
-                                        resource="{{ prop.uri }}">
-                                        <td>
-                                            <a href="https://github.com/Informatievlaanderen/purl-eu/issues/new?title=Issue%20for%20{{ prop.name }}&body=Explain%20your%20issue">
-                                                <i class="icon"></i>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <code property="rdfs:label">
-                                                <a href="{{ prop.uri }}"
-                                                   data-toggle="tooltip"
-                                                   data-content="{{ prop.uri }}"
-                                                   data-placement="right">{{ prop.label[language] }}</a>
-                                            </code>
-                                        </td>
-                                        <td>
-                                            {% for range in prop.scopedrange %}
-                                                {% if range['range_uri'] == range['range_puri'] %}
-                                                    <a href="{{ range['range_uri'] }}"
-                                                       data-toggle="tooltip"
-                                                       data-content="{{ range['range_puri'] }}"
-                                                       data-placement="right">{{ range['range_label'][language] }}</a>
-                                                {% else %}
-                                                    <a href="{{ range['range_uri'] }}" data-placement="right">{{ range['range_label'][language] }}</a>
-                                                {% endif %}
-                                            {% endfor %}
-                                        </td>
-                                        <td>
-                                            {{ prop['cardinality'] }}
-                                        </td>
-                                        <td property="rdfs:comment">
-                                            {{ prop.description[language] }}
-                                        </td>
-                                        <td property="skos:scopeNote">
-                                            {{ prop.usage[language] | safe }}
-                                        </td>
-                                        <td>
-                                            {% if prop['codelist_uri'] %}<a href="{{ prop['codelist_uri'] }}">Link</a>{% endif %}
-                                        </td>
-                                    </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
+                                    Voor dit datatype zijn geen eigenschappen gedefinieerd.
+                                </dd>
+                            {% endif %}
+                        </dl>
+                        <dd>
+                            Add an issue for this property <a href="https://github.com/Informatievlaanderen/purl-eu/issues/new?title=Issue%20for%20{{ entity.name }}&body=Explain%20your%20issue">here</a>.
+                        </dd>
                     </div>
-                {% endif %}
+                    {% if ((entity.properties | length) > 0 ) %}
+                        <div class="u-table-overflow">
+                            <table class="data-table">
+                                <thead>
+                                    <tr class="data-table__header">
+                                        <th class="data-table__header-title--sortable">
+                                        </th>
+                                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">
+                                            Eigenschap
+                                        </th>
+                                        <th class="data-table__header-title--sortable">
+                                            Verwacht Type
+                                        </th>
+                                        <th class="data-table__header-title--sortable">
+                                            Kardinaliteit
+                                        </th>
+                                        <th class="data-table__header-title--sortable">
+                                            Beschrijving
+                                        </th>
+                                        <th class="data-table__header-title--sortable">
+                                            Gebruik
+                                        </th>
+                                        <th class="data-table__header-title--sortable">
+                                            Codelijst
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="supertype">
+                                    {% for prop in entity['properties'] | sort(attribute=sortattr) %}
+                                        <tr id="{{ (entity.name ~ ':' ~ prop.name ) | urlencode }}"
+                                            typeof="rdfs:Property"
+                                            resource="{{ prop.uri }}">
+                                            <td>
+                                                <a href="https://github.com/Informatievlaanderen/purl-eu/issues/new?title=Issue%20for%20{{ prop.name }}&body=Explain%20your%20issue">
+                                                    <i class="icon"></i>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <code property="rdfs:label">
+                                                    <a href="{{ prop.uri }}"
+                                                       data-toggle="tooltip"
+                                                       data-content="{{ prop.uri }}"
+                                                       data-placement="right">{{ prop.label[language] }}</a>
+                                                </code>
+                                            </td>
+                                            <td>
+                                                {% for range in prop.scopedrange %}
+                                                    {% if range['range_uri'] == range['range_puri'] %}
+                                                        <a href="{{ range['range_uri'] }}"
+                                                           data-toggle="tooltip"
+                                                           data-content="{{ range['range_puri'] }}"
+                                                           data-placement="right">{{ range['range_label'][language] }}</a>
+                                                    {% else %}
+                                                        <a href="{{ range['range_uri'] }}" data-placement="right">{{ range['range_label'][language] }}</a>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </td>
+                                            <td>
+                                                {{ prop['cardinality'] }}
+                                            </td>
+                                            <td property="rdfs:comment">
+                                                {{ prop.description[language] }}
+                                            </td>
+                                            <td property="skos:scopeNote">
+                                                {{ prop.usage[language] | safe }}
+                                            </td>
+                                            <td>
+                                                {% if prop['codelist_uri'] %}<a href="{{ prop['codelist_uri'] }}">Link</a>{% endif %}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% endif %}
+                </div>
             </section>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    </section>
 {% endif %}
 <section class="informative">
     <h2 aria-level="1" role="heading" id="h2_sotd">
