@@ -404,7 +404,7 @@
         </div>
         {% if ((entity.properties | length) > 0 ) %}
             <div class="u-table-overflow">
-                <table class="data-table">
+                <table class="data-table simple" id="table-mandatory-classes">
                     <thead>
                         <tr class="data-table__header">
                             <th class="data-table__header-title--sortable">
@@ -433,7 +433,8 @@
                         {% for prop in entity['properties'] | sort(attribute=sortattr) %}
                             <tr id="{{ (entity.name ~ ':' ~ prop.name) | urlencode }}"
                                 typeof="rdfs:Property"
-                                resource="{{ prop.uri }}">
+                                resource="{{ prop.uri }}"
+                                class="class mandatory">
                                 <td>
                                     <a href="https://github.com/Informatievlaanderen/purl-eu/issues/new?title=Issue%20for%20{{ prop.name }}&body=Explain%20your%20issue">
                                         <i class="icon"></i>
@@ -673,6 +674,166 @@
         {% endblock %}
     </div>
 </section>
+<table class="simple" id="table-mandatory-classes">
+        <thead>
+            <tr>
+                <th>
+                    <p>
+                        Class name
+                    </p>
+                </th>
+                <th>
+                    <p>
+                        Usage note for the Application Profile
+                    </p>
+                </th>
+                <th>
+                    <p>
+                        URI
+                    </p>
+                </th>
+                <th>
+                    <p>
+                        Reference
+                    </p>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="class mandatory" id="agent">
+                <td>
+                    <a href="#properties-for-agent">Agent</a>
+                </td>
+                <td>
+                    <p>
+                        An entity (e.g., an individual or an organisation) that is associated with Catalogues, Catalogue Records, Data Services, or Datasets. If the Agent is an organisation, the use of the Organization Ontology [<cite><a class="bibref"
+   data-link-type="biblio"
+   href="#bib-vocab-org"
+   title="The Organization Ontology">VOCAB-ORG</a></cite>] is recommended. See <a class="no-sectionRef sec-ref" href="#agent-roles">§&nbsp;<bdi class="secno">7. </bdi>Agent Roles</a> for a discussion on Agent roles.
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        <code>foaf:Agent</code>
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        <a class="sec-ref" href="http://xmlns.com/foaf/spec#term_Agent">§&nbsp;Class: foaf:Agent</a> [<cite><a class="bibref"
+   data-link-type="biblio"
+   href="#bib-foaf"
+   title="FOAF Vocabulary Specification 0.99 (Paddington Edition)">FOAF</a></cite>]
+                    </p>
+                    <p>
+                        [<cite><a class="bibref"
+   data-link-type="biblio"
+   href="#bib-vocab-org"
+   title="The Organization Ontology">VOCAB-ORG</a></cite>]
+                    </p>
+                </td>
+            </tr>
+            <tr class="class mandatory" id="catalogue">
+                <td>
+                    <a href="#properties-for-catalogue">Catalogue</a>
+                </td>
+                <td>
+                    <p>
+                        A catalogue or repository that hosts the resources (as Data Services, Datasets, or other Catalogues) being described.
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        <code>dcat:Catalog</code>
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        <a href="https://www.w3.org/TR/vocab-dcat-2/#Class:Catalog">§&nbsp;<bdi class="secno">6.3 </bdi>Class: Catalog</a> [<cite><a class="bibref"
+   data-link-type="biblio"
+   href="#bib-vocab-dcat-2"
+   title="Data Catalog Vocabulary (DCAT) - Version 2">VOCAB-DCAT-2</a></cite>]
+                    </p>
+                </td>
+            </tr>
+            <tr class="class mandatory" id="dataset">
+                <td>
+                    <a href="#properties-for-dataset">Dataset</a>
+                </td>
+                <td>
+                    <p>
+                        A conceptual entity that represents the information published.
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        <code>dcat:Dataset</code>
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        <a href="https://www.w3.org/TR/vocab-dcat-2/#Class:Dataset">§&nbsp;<bdi class="secno">6.6 </bdi>Class: Dataset</a> [<cite><a class="bibref"
+   data-link-type="biblio"
+   href="#bib-vocab-dcat-2"
+   title="Data Catalog Vocabulary (DCAT) - Version 2">VOCAB-DCAT-2</a></cite>]
+                    </p>
+                </td>
+            </tr>
+            <tr class="class mandatory" id="literal">
+                <td>
+                    <p>
+                        Literal
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        A literal value such as a string or integer; Literals may be typed, e.g. as a date according to <code>xsd:date</code>. Literals that contain human-readable text have an optional language tag as defined by [<cite><a class="bibref"
+   data-link-type="biblio"
+   href="#bib-bcp47"
+   title="Tags for Identifying Languages">BCP47</a></cite>].
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        <code>rdfs:Literal</code>
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        <a class="sec-ref"
+                           href="https://www.w3.org/TR/rdf11-concepts/#section-Graph-Literal">§&nbsp;<bdi class="secno">3.3 </bdi>Literals</a> [<cite><a class="bibref"
+   data-link-type="biblio"
+   href="#bib-rdf11-concepts"
+   title="RDF 1.1 Concepts and Abstract Syntax">RDF11-CONCEPTS</a></cite>]
+                    </p>
+                </td>
+            </tr>
+            <tr class="class mandatory" id="resource">
+                <td>
+                    <p>
+                        Resource
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        Anything described by RDF.
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        <code>rdfs:Resource</code>
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        <a class="sec-ref" href="https://www.w3.org/TR/rdf-schema/#ch_resource">§&nbsp;<bdi class="secno">2.1 </bdi>rdfs:Resource</a> [<cite><a class="bibref"
+   data-link-type="biblio"
+   href="#bib-rdf-schema"
+   title="RDF Schema 1.1">RDF-SCHEMA</a></cite>]
+                    </p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 <!-- End page content -->
 </body>
 </html>
