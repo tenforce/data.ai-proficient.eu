@@ -399,7 +399,7 @@
                 {% endif %}
             </dl>
             <dd>
-                Add an issue for this entity <a href="https://github.com/Informatievlaanderen/purl-eu/issues/new?title=Issue%20for%20{{ entity.name }}&body=Explain%20your%20issue">here</a>.
+                Add an issue for this entity <a href="{{ metadata.feedbackurl }}/new?title=Issue%20for%20{{ entity.name }}&body=Explain%20your%20issue"}}>here</a>.
             </dd>
         </div>
         {% if ((entity.properties | length) > 0 ) %}
@@ -436,7 +436,7 @@
                                 resource="{{ prop.uri }}"
                                 class="class mandatory">
                                 <td>
-                                    <a href="https://github.com/Informatievlaanderen/purl-eu/issues/new?title=Issue%20for%20{{ prop.name }}&body=Explain%20your%20issue">
+                                    <a href="{{ metadata.feedbackurl }}/issues/new?title=Issue%20for%20{{ prop.name }}&body=Explain%20your%20issue">
                                         <i class="icon"></i>
                                     </a>
                                 </td>
@@ -555,7 +555,7 @@
                         {% endif %}
                     </dl>
                     <dd>
-                        Add an issue for this property <a href="https://github.com/Informatievlaanderen/purl-eu/issues/new?title=Issue%20for%20{{ entity.name }}&body=Explain%20your%20issue">here</a>.
+                        Add an issue for this property <a href="{{ metadata.feedbackurl }}/issues/new?title=Issue%20for%20{{ entity.name }}&body=Explain%20your%20issue">here</a>.
                     </dd>
                 </div>
                 {% if ((entity.properties | length) > 0 ) %}
