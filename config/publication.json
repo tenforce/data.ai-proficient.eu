@@ -18,49 +18,13 @@
     "dummy": "25"
   },
   {
-    "urlref": "/doc/applicationprofile/netex-belgium/vehiclescheduling-ap/",
-    "seealso": "/doc/applicationprofile/netex-belgium/vehiclescheduling-ap/working-draft/2021-06-01",
-    "type": "ap",
-    "dummy": "12"
-  },
-  {
-    "urlref": "/doc/applicationprofile/netex-belgium/vehiclescheduling-ap/working-draft/2021-06-01",
-    "repository": "https://github.com/Informatievlaanderen/OSLOthema-mobiliteitDienstregelingEnPlanning",
-    "branchtag": "master",
-    "name": "vehiclescheduling-ap",
-    "filename": "config/OSLO-mobiliteitDienstregelingEnPlanning-AP.json",
-    "navigation": {},
-    "dummy": "12"
-  },
-  {
+	  "note" : "This publication point is acctually obsolete",
     "urlref": "/doc/applicationprofile/manufacturing/working-draft/2021-07-01",
     "repository": "https://github.com/tenforce/ai-proficient-thema",
-    "branchtag": "master",
+    "branchtag": "95b43053a6c7917267b455ccb1f496667e69d10c",
     "name": "manufacturing",
     "filename": "config/manufacturing.json",
     "navigation": {},
     "dummy": "22"
-  },
-  {
-    "disabled" : "true",
-    "dummy": "44",
-    "urlref": "/doc/applicatieprofiel/metadata-dcat/erkendestandaard/2021-04-22",
-    "repository": " https://github.com/Informatievlaanderen/OSLOthema-metadataVoorServices",
-    "branchtag": "master",
-    "name": "metadata-voor-services-ap",
-    "filename": "config/metadata-voor-services.json",
-    "navigation": {
-      "prev": "/doc/applicatieprofiel/metadata-dcat/kandidaatstandaard/2021-03-23"
-    }
-  },
-  {
-    "disabled" : "true",
-    "urlref": "/doc/vocabulary/air-cz",
-    "repository": "https://github.com/Informatievlaanderen/duet-vocabularies",
-    "branchtag": "master",
-    "name": "air-cz-voc",
-    "filename": "config/air-cz-voc.json",
-    "examples": false,
-    "navigation": {}
   }
 ]
