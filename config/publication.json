@@ -1,5 +1,14 @@
 [  
   {
+    "urlref": "/doc/applicationprofile/conti10/working-draft/2022-04-01",
+    "repository": "https://github.com/tenforce/ai-proficient-thema",
+    "branchtag": "master",
+    "name": "conti10",
+    "filename": "config/conti10.json",
+    "navigation": {},
+    "dummy": "25"
+  },
+  {
     "urlref": "/doc/applicationprofile/core/working-draft/2022-03-01",
     "repository": "https://github.com/tenforce/ai-proficient-thema",
     "branchtag": "master",
