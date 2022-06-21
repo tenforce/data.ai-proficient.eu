@@ -496,7 +496,6 @@ jobs:
           command: |
             ls -al *
             if [ -d report ] ; then ls -al report/* || ls -al report ; fi
-            find report
       - run:
           name: insert the commit
           workdir: /tmp/generated
