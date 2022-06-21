@@ -467,11 +467,11 @@ jobs:
           name: Checkout target repo
           workdir: /tmp
           command: |
-            rm -rf data.ai-proficiant.eu-generated
-            git clone git@github.com:tenforce/data.ai-proficiant.eu-generated.git
+            rm -rf generated
+            git clone git@github.com:tenforce/data.ai-proficiant.eu-generated.git generated
       - run:
           name: clean the generated directory
-          workdir: /tmp/data.ai-proficiant.eu-generated
+          workdir: /tmp/generated
           command: |
             git fetch origin
             git checkout -b "${CIRCLE_BRANCH}" --track "origin/${CIRCLE_BRANCH}" || git checkout "${CIRCLE_BRANCH}"
@@ -479,7 +479,7 @@ jobs:
       - run:
           name: Copy static assets
           command: |
-            cp -R site-skeleton/* /tmp/data.ai-proficiant.eu-generated/
+            cp -R site-skeleton/* /tmp/generated/
       - run:
           name: Copy generated assets
           workdir: /tmp/workspace
@@ -493,10 +493,10 @@ jobs:
             if [ -d examples ] ; then if [ ! "$(ls -A examples)" ] ; then echo "directory examples is empty" ; else cp -rT examples /tmp/generated/examples/ ; fi fi
       - run:
           name: List the files which have been created
+          workdir: /tmp/generated
           command: |
             ls -al *
             if [ -d report ] ; then ls -al report/* || ls -al report ; fi
-            find report
       - run:
           name: insert the commit
           workdir: /tmp/generated
