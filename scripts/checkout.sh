@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "this script is deprecated, please use findPublicationsToUpdate.sh followed by checkoutRepositories.sh"
+
+
 PUBCONFIG=$2
 ROOTDIR=$1
 
@@ -57,7 +60,7 @@ fi
 
 # determin the last changed files
 mkdir -p $ROOTDIR
-curl -o $ROOTDIR/commit.json https://github.com/bertvannuffelen/semiceu-generated/raw/$CIRCLE_BRANCH/report/commit.json
+curl -o $ROOTDIR/commit.json https://raw.githubusercontent.com/Informatievlaanderen/OSLO-Generated/$CIRCLE_BRANCH/report/commit.json
 sleep 5s
 jq . $ROOTDIR/commit.json
 if  [ $? -eq 0 ] ; then
@@ -137,7 +140,7 @@ then
 	   fi
 	   comhash=$(git log | grep commit | head -1 | cut -d " " -f 2)
 	   echo "hashcode to add: ${comhash}"
-	   echo ${row} | base64 --decode | jq --arg comhash "${comhash}" --arg toolchainhash "${toolchainhash}" '. + {documentcommit : $comhash, toolchaincommit: $toolchainhash, hostname: "https://data.ai-proficiant.eu" }' > .publication-point.json
+	   echo ${row} | base64 --decode | jq --arg comhash "${comhash}" --arg toolchainhash "${toolchainhash}" '. + {documentcommit : $comhash, toolchaincommit: $toolchainhash, hostname: "https://otl-test.data.vlaanderen.be" }' > .publication-point.json
 	   cleanup_directory
         popd
 
@@ -181,4 +184,5 @@ then
     touch $ROOTDIR/rawcheckouts.txt
 else
     echo "problem in processing: ${PUBCONFIG}"
+	exit -1
 fi

@@ -57,7 +57,7 @@
       "@id": "rdfs:label",
       "@container": "@language"
     },
-    "description": {
+    "definition": {
       "@id": "rdfs:comment",
       "@container": "@language"
     },
@@ -89,7 +89,7 @@
       "@id": "rdfs:seeAlso"
     },
     "usage": {
-      "@id": "skos:scopeNote",
+      "@id": "vann:usageNote",
       "@container": "@language"
     },
     "parents" :{
