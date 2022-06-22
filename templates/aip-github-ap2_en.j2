@@ -648,7 +648,7 @@
         <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">
             JSON-LD context
         </h2>
-        #} (niet normatief)
+        #} (not normative)
         {% block jsonld %}
             <p>
                 A reusable JSON-LD context definition for this application profile is retrievable at: <a href="https://raw.githubusercontent.com/tenforce/data.ai-proficiant.eu-generated/master{{ documentroot }}/context/{{ metadata.filename }}.jsonld"
@@ -666,12 +666,22 @@
         <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">
             SHACL template
         </h2>
-        #} (niet normatief)
+        #} (not normative)
         {% block shacl %}
             <p>
                 A reusable SHACL template for this application profile is retrievable at: <a href="https://raw.githubusercontent.com/tenforce/data.ai-proficiant.eu-generated/master{{ documentroot }}/shacl/{{ metadata.filename }}-SHACL.ttl"
     target="_blank">{{ documentroot }}/shacl/{{ metadata.filename }}-SHACL.ttl</a>
             </p>
+        {% endblock %}
+    </div>
+</section>
+<section class="informative">
+    <h2 aria-level="1" role="heading" id="h2_sotd">
+        Examples
+    </h2>
+    <div class="region region--no-space-top" id="examples">
+        {% block examples %}
+	<p> No examples defined </p>
         {% endblock %}
     </div>
 </section>
