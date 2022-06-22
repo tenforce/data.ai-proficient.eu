@@ -6,7 +6,8 @@
     "name": "conti10lim",
     "filename": "config/conti10lim.json",
     "navigation": {},
-    "dummy": "31"
+    "dummy": "31",
+    "examples" : true
   },
   {
     "urlref": "/doc/applicationprofile/conti10/working-draft/2022-04-01",
